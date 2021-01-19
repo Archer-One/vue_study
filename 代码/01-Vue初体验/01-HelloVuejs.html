@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>{{message}}}</h1>>
+    <h2>{{name}}</h2>
+
+</div>
+
+
+
+<script src="../js/vue.js"></script>
+<script>
+    // let(变量)/const（常量）
+    const app = new vue({
+        el: '#app', //用于挂载要管理的元素
+        data: { // 定义数据
+            message: "hello， world!",
+            name:"hahhaha"
+        }
+    })
+</script>
+</body>
+</html>

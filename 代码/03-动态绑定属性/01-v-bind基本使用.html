@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <img v-bind:src="imageURL" alt="">
+<!--    语法糖-->
+    <a :href="aHref">百度一下</a>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message:"hellos"
+            imageURl:'https://www.baidu.com/s?wd=%E5%8D%8A%E6%AC%A1%E5%85%83&usm=2&ie=utf-8&rsv_cq=&rsv_dl=0_right_recommends_merge_21102&euri=9cf79492e365423fab079c728b4657e8',
+            aHref: 'www.baidu.com'
+        }
+    })
+</script>
+</body>
+</html>

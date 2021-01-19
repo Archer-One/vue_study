@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--  快速创建div  div#app
+      快速创建列表  ul>li
+ -->
+<div id="app">
+    {{message}}
+    <ui>
+        <li v-for="item in movies">{{item}}</li>
+    </ui>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message: 'hello',
+            movies: ['海贼王','大话西游','星际穿越']
+        }
+    })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(m,index) in movies" v-bind:class="{active: origioncolor(index)}" v-on:click="changeColor(index)">{{m}}</li>
+    </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            movies:['海王','海贼王','火影忍者','进击的巨人'],
+            isActive: false
+        },
+        methods:{
+            origioncolor: function (index){
+                if(index==1){
+                    this.isActive=true;
+                }
+                return this.isActive
+            },
+            changeColor: function(index){
+                for(let i=2; i<4; i++){
+                    if(i==index)
+                        this.isActive = true;
+                    else
+                        this.isActive = false;
+                }
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

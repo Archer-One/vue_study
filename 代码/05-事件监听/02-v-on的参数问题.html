@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--事件调用的方法没有参数-->
+  <button @click="btn1Click()">按钮1</button>
+  <button @click="btnClick">按钮1</button>
+
+  <!--时间定义时，写方法省略小括号，但方法本身需要一个参数的，这个时候vue会默认将浏览器产生的event事件对象作为参数传入到方法-->
+  <button @click="btn2Click">按钮2</button>
+  <button>按钮2</button>
+
+  <!--方法定义时，我们急需要event对象，又需要其他参数，传输event事件使用$event-->
+  <button @click="btn3Click('aaa',$event)">按钮3</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hellos"
+    },
+    methods:{
+      btn1Click(){
+        console.log("btn1Click");
+      },
+      btn2Click(event){
+        console.log('---------',event);
+      },
+      btn3Click(test,event){
+        console.log('---------',test,event);
+      }
+
+    }
+  })
+</script>
+</body>
+</html>

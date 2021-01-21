@@ -31,6 +31,36 @@ const app = new Vue({
       count: 1
     }
     ]
-}
+  },
+  methods:{
+    getPrice(price){
+      return '￥'+price.toFixed(2);
+    },
+    decrement(index) {
+      if(this.books[index].count>0)
+        this.books[index].count--;
+    },
+    increment(index) {
+      this.books[index].count++;
+    },
+    removeHandler(index){
+      this.books.splice(index,1);
+    }
+  },
+  computed:{
+    totalPrice(){
+      let sum = 0;
+      for(let i=0; i<this.books.length; i++){
+        console.log('--------'+this.books[i].price+'-------'+this.books[i].count);
+        sum += this.books[i].price * this.books[i].count;
+      }
+      return sum;
+    }
+  },
+  filters:{
+    showPrice(price){
+      return '￥'+price.toFixed(2);
+    }
+  }
 
 })

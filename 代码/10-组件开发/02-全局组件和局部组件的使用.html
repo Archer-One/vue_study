@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <mycpn></mycpn>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const cpnC = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题</h2>
+        <p>我是内容，哈哈哈哈</p>
+      </div>
+    `
+  })
+  // 2. 全局组件，可以在各个实例中试用
+  // Vue.component('my-cpn',cpnC);
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message:"hellos"
+    },
+    components:{
+      mycpn: cpnC
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <mycpn :cmovies="movies" :cmessage="message"></mycpn>
+</div>
+
+
+
+<script src="../js/vue.js"></script>
+<script>
+   cpnC = Vue.extend({
+    template:`
+      <div>
+        <p>{{cmovies}}</p>
+        <p>{{cmessage}}</p>
+      </div>
+    `,
+    props: ['cmovies','cmessage'],
+    data(){
+      return {}
+    },
+    methods: {
+
+    }
+  })
+
+  // Vue.component('cpn1',cpn)
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message:"hello",
+      movies: ['海贼王','一拳超人']
+    },
+    components:{
+      mycpn:cpnC
+    }
+    // components:{
+    //   mycpn: cpnC
+    // }
+  })
+</script>
+</body>
+</html>

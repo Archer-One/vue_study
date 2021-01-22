@@ -8,26 +8,21 @@
 <div id="app">
   <mycpn :cmovies="movies" :cmessage="message"></mycpn>
 </div>
-
+<template id="cpn">
+  <div>
+    <p>{{cmovies}}</p>
+    <p>{{cmessage}}</p>
+  </div>
+</template>
 
 
 <script src="../js/vue.js"></script>
 <script>
-   cpnC = Vue.extend({
-    template:`
-      <div>
-        <p>{{cmovies}}</p>
-        <p>{{cmessage}}</p>
-      </div>
-    `,
+   const cpnC ={
+    template:'#cpn',
     props: ['cmovies','cmessage'],
-    data(){
-      return {}
-    },
-    methods: {
 
-    }
-  })
+  }
 
   // Vue.component('cpn1',cpn)
 

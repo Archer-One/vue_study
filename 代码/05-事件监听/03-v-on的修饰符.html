@@ -22,7 +22,7 @@
   <input type="text" @keyup.enter="keyup">
 
   <!--4. .once修饰符的使用-->
-  <button @click.once="btn2Click"></button>
+  <button @click.once="btn2Click">aaa</button>
 </div>
 
 <script src="../js/vue.js"></script>
@@ -44,7 +44,10 @@
       },
       keyup(){
         console.log("keyup");
-      }
+      },
+      btn2Click(){
+        console.log("btnClick");
+      },
     }
   })
 </script>

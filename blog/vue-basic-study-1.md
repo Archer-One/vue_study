@@ -38,14 +38,48 @@
 
 
 ### DOM对象操作
-+ 列表数据——**v-for**
++ 循环遍历——**v-for**
     + 解释：为了利用for循环将列表数据输出
     + data中定义：movies = ['海贼王','大话西游','星际穿越']
-    + 使用：```<ui><li v-for="item in movies">{{item}}</li></ui>```
-+ 方法绑定——**v-on**
+    + 使用：
+    ```js
+        <ui><li v-for="item in movies">{{item}}</li></ui>
+        <ui><li v-for="（item， index） in movies">{{index + ": " item}}</li></ui>
+        <ui><li v-for="(item, key, index) in movies">{{item}}</li></ui>
+    ```
+    + 通过循环遍历时添加key属性减少DOM渲染次数,key值不要重复
+        ```js
+            <li v-for="item in letters" :key="item">{{item}}</li>
+        ```
++ 事件监听——**v-on**
     + 解释：为某个动作添加函数例如点击
     + 使用：```<button v-on:click="add()">+</button>```
     + 使用（语法糖）：```<button @:click="add()">+</button>``` 
+    + 事件监听需要注意参数问题
+        + 1.当绑定方法后面不加括号，声明参数有一个参数时，默认传递原生事件event参数
+            ```html
+                <button @:click="btnClick">+</button>
+            ```
+            ```js
+                btnClick(event){
+                    console.log(event)  
+                }
+            ```
+        + 2.当传递多个参数同时需要传递event事件时,event传递为$event
+            ```html
+                <button @:click="btnClick(10,$event)">+</button>
+            ```
+            ```js
+                btnClick(num, event){
+                    console.log(event)  
+                }
+            ```
+    + 同时可以加一些修饰符
+        + **.stop**:停止冒泡,当div-A定义在div-B内部，两个都有点击函数，那么div-A点击函数触发时div-B函数必然被触发，.stop可以阻止这种传递
+        + **.prevent**：阻止默认行为
+        + **.keyCode**：监听某个键帽
+        + **.once**：只触发一次
+    
 + 一次性使用——**v-once**
     + 解释：数据解析只有在最开始创建实例的时候解析一次，后续不会因为该变量变化改变
     + 使用：```<h2 v-once>{{message}}</h2>```
@@ -70,6 +104,40 @@
         </div>
         ```
 + 属性绑定——**v-bind**
+    + 用于绑定一个或多个属性值或者向另一个组件传递props值
+    + 语法糖：**:**
+    + 绑定属性值
+        ```html
+        <a v-bind:href="link"> 百度一下</a>
+
+        data:{
+            link: 'www.baidu.com'
+        }
+
+        ```
+    + 绑定类
+        ```html
+            .active{
+                color: red;
+            }
+            <h2 v-bind:class="{active: isActive, line: isLine}">{{message}}</h2>
+            data: {
+                message:"hello",
+                isActive: true,
+                isLine: true
+            }
+        ```
+    + 同时也可以直接绑定类
+        ```html
+            getStyles: function (){
+                return {fontSize: this.finalSize + 'px',color: this.finalColor}
+            }
+
+            <h2 :style="getStyles()">{{message}}</h2>
+
+        ```
++ v-show：表示是否显示该dom
+
 ### vue属性
 #### 生命周期
 + 通过一些自带的钩子在某些生命周期完成用户特殊要求
@@ -103,3 +171,17 @@ getFullName: function (){
 }
 
 ```
+### ES6补充
++ const、let关键字具有块限制
++ 对象增强写法
+    ```js
+        let name = 'why'
+        let age = 18
+
+        let obj1 = {
+            name,age
+        }
+
+    ```
+
+### 表单绑定-v-model
